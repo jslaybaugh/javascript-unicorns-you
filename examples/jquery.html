@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Doin it with jQuery</title>
+</head>
+<body>
+	<h1>jQuery</h1>
+	<form id="frmZip">
+		<fieldset>
+			<label>Enter a Zip Code: <input type="text" id="txtZip" /></label>
+			<input type="submit" value="Add" />
+			<span id="uxError" style="display:none;color:#c00;"></span>
+		</fieldset>
+	</form>
+	<ul id="ulList">
+	
+	</ul>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.simpleWeather.js"></script>
+	<script type="text/javascript">
+		$(function ()
+		{
+			$("#frmZip").submit(function ()
+			{
+				var zip = $("#txtZip").val();
+				$("#uxError").hide();
+				if (zip.length < 1)
+				{
+					$("#uxError").text("You forgot something.").fadeIn("slow", function () { window.setTimeout(function () { $("#uxError").fadeOut(); }, 4000); })
+					return false;
+				}
+				$("#ulList").append("<li><span class='zip'>" + $("#txtZip").val() + "</span> <a href='#' class='get'>Get Weather</a> <a href='#' class='remove'>Remove</a></li>");
+				$("#txtZip").val("").focus();
+				return false;
+			});
+
+			$("ul").on("click", "a.get", function ()
+			{
+				var a = $(this);
+				a.parent().find(".weather").remove();
+				var zip = (a.siblings(".zip").text());
+
+				$.simpleWeather({
+					zipcode: zip,
+					unit: 'f',
+					success: function (weather)
+					{
+						a.parent().append("<span class='weather' style='display:none;'> The current temperature in " + weather.city + ", " + weather.region + " is " + weather.temp + "°F</span>");
+						a.siblings(".weather").fadeIn();
+					},
+					error: function (error)
+					{
+						alert(error);
+					}
+				});
+				return false;
+			})
+			.on("click", "a.remove", function ()
+			{
+				$(this).parent().remove();
+			});
+
+
+		});
+	</script>
+</body>
+</html>

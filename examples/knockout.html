@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Doin it with Knockout</title>
+</head>
+<body>
+	<h1>Knockout</h1>
+	<form data-bind="submit: AddPerson">
+		<fieldset>
+			<label>First Name: <input type="text" data-bind="value: FirstName" /></label>
+			<label>Last Name: <input type="text" data-bind="value: LastName" /></label>
+			<label>Phone: <input type="text" data-bind="value: Phone" /></label>
+			<input type="submit" value="Add" />
+			<span style="color:#c00;" data-bind="visible: ErrorPresent, text: Error"></span>
+		</fieldset>
+	</form>
+	<table style="width:100%;" border="1" data-bind="visible: People().length > 0">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Phone</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: People">
+			<tr>
+				<td data-bind="text: FullName"></td>
+				<td data-bind="text: FormattedPhone"></td>
+				<td><button data-bind="click: Call">Call</button> <button data-bind="click: $root.RemovePerson">Remove</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<div><span data-bind="text: People().length > 0 ? People().length : 'No'"></span> Peeps</div>
+	<script type="text/javascript" src="Class.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
+	<script type="text/javascript" src="knockout.js"></script>
+	<script type="text/javascript">
+		
+			ko.applyBindings(new ViewModel);
+	</script>
+</body>
+</html>

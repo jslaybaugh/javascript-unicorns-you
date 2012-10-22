@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "show", "show\", "{2E1319AD-DC43-48BE-AC9E-3605A79E0CBF}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/show"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\Side Work\Refresh Wichita Falls\JavaScript-Unicorns-You\show\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\show\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/show"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\Side Work\Refresh Wichita Falls\JavaScript-Unicorns-You\show\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\show\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50622"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E1319AD-DC43-48BE-AC9E-3605A79E0CBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E1319AD-DC43-48BE-AC9E-3605A79E0CBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

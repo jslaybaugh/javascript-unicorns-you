@@ -1,0 +1,418 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>JavaScript, Unicorns, and You!</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="css/show.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h2>JavaScript, Unicorns, & You!</h2>
+					<p><img src="img/be-a-unicorn.jpg" /></p>
+					<h4>Jorin Slaybaugh - Refresh Wichita Falls - October 22, 2012</h4>
+				</section>
+
+				<section>
+					<h2>Disclaimers</h2>
+					<p class="fragment">No Unicorns :(</p>
+					<p class="fragment">Lots of JavaScript :)</p>
+					<p class="fragment">I am NOT an expert.</p>
+					<p class="fragment">Gonna start with the basics but quickly get pretty advanced.</p>
+					<p class="fragment">I will be live-coding, so pay attention so we can catch my mistakes and get out of here at a decent hour.</p>
+					<p class="fragment">Let's get out of here at a decent hour because I have a kickball game at 9:00. :-P</p>
+				</section>
+				
+				<section>
+					<h2>Who am I</h2>
+					<ul>
+						<li>VP of Technology at E-vent Software</li>
+						<li>Live and work in Wichita Falls</li>
+						<li>Graduated from MSU in 2002</li>
+						<li>.NET | SQL | Windows</li>
+						<li>HTML | CSS | JavaScript</li>
+						<li>Twitter: <a href="http://twitter.com/jslaybaugh" target="_blank">@jslaybaugh</a></li>
+						<li>Email: <a href="mailto:jslaybaugh@gmail.com" target="_blank">jslaybaugh@gmail.com</a></li>
+						<li>Blog: <a href="http://cacheandquery.com" target="_blank">cacheandquery.com</a></li>
+						<li>All the rest: <a href="http://flavors.me/jslaybaugh" target="_blank">flavors.me/jslaybaugh</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>We're hiring in 2013.</h2>
+					<ul>
+						<li>Are you a programmer who cares about good design?</li>
+						<li>Do you want to stay in Wichita Falls? I don't care.</li>
+						<li>Do you know C#?</li>
+						<li>Do you think PCs are actually pretty damn functional?</li>
+						<li>Database know-how</li>
+						<li>Experience is the most important</li>
+					</ul>
+				</section>
+				
+				<section>
+					<section>
+						<h1>Brief History of JavaScript</h1>
+					</section>
+					<section>
+						<h3>Created in 1995 by Brendan Eich</h3>
+						<p><img src="img/brendan-eich.jpg" /></p>
+						<p class="fragment">... in 10 days (he's wicked smart).</p>
+					</section>
+					<section>
+						<h3>The Details</h3>
+						<p>Brendan worked for Netscape.</p>
+						<p>Netscape was fighting with Microsoft over "the Internet."</p>
+						<p>Java (made by Sun Microsystems) was the new hotness.</p>
+						<p>Netscape viewed their browser as a lightweight OS with the JVM.</p>
+						<p>Netscape wanted easy interpreted language for the masses.</p>
+						<p>Called JavaScript to ride Java's popularity & scratch Sun's back.</p>
+						<blockquote>JS had to 'look like Java' only less so, be Java's dumb kid brother or boy-hostage sidekick. Plus, I had to be done in ten days or something worse than JS would have happened.</blockquote>
+						<small><br />- Brendan Eich (in 2010)</small>
+					</section>
+					<section>
+						<h3>More Details</h3>
+						<p>So, since Netscape 2.0 had JavaScript, IE 3.0 needed... JScript!</p>
+						<p>Well, flash was also kind of a big deal, so <span style="text-decoration:line-through">Adobe</span> Macromedia decided they'd create ActionScript!</p>
+						<p>Some smart people (Brendan Eich again) decided we needed a standard for this new scripting language.</p>
+						<p>In 1996, the European Computer Manufacturers Association (ECMA) began standardizing the specification for what would be called ECMAScript.</p>
+						<blockquote>ECMAScript was always an unwanted trade name that sounds like a skin disease.</blockquote>
+						<small><br />- Brendan Eich (in 2012)</small>
+					</section>
+					<section>
+						<h3>Oh. Sounds... Kinda crappy actually.</h3>
+						<p>So, amidst all the politics and dumbing down, not to mention it was modeled after Java, JavaScript had many early hurdles.</p>
+						<p>But in spite of all that, what Brendan came up with in those 10 days has turned into something very powerful.</p>
+						<p>Dynamic, interpreted, flowing, procedural, prototypal, functional, extensible, scalable, asynchronous, event-driven...</p>
+						<p>JavaScript has taken on a life of its own and while it was once scorned, it is now one of the <a href="http://www.readwriteweb.com/hack/2012/06/5-ways-to-tell-which-programming-lanugages-are-most-popular.php">most popular languages</a>.</p>
+						<blockquote>Any application that can be written in JavaScript, will be written in JavaScript.</blockquote>
+						<small><br />- <a href="http://www.codinghorror.com/blog/2007/07/the-principle-of-least-power.html">Atwood's Law</a></small>
+					</section>
+					<section>
+						<h3>Language Basics</h3>
+						<ul>
+							<li>Case-sensitive</li>
+							<li>White-space-agnostic</li>
+							<li>(Optional) semicolon statement termination</li>
+							<li>Comments: <code>//</code> or /*  */</li>
+							<li>4 main types: <code>number, string, boolean, object</code></li>
+							<li>Control statements with parentheses and curly braces</li>
+							<li><code>||</code>, <code>&&</code>, <code>!</code></li>
+							<li><code>=</code>, <code>==</code>, <code>===</code>, <code>!=</code>, <code>!==</code></li>
+							<li>Declare variables using <code>var</code></li>
+							<li>There's a bunch more</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Here's an example</h3>
+						<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">
+function kindasort(arr)
+{
+    var temp = [];
+    for (var i = 0; i < arr.length; i++)
+    {
+        if (temp.length <= 0)
+        {
+            temp.push(arr[i]);
+        }
+        else
+        {
+            for (var j = 0; j < temp.length; j++)
+            {
+                if (temp.length == 1) // 1 item array
+                {
+                    if (arr[i] < temp[j])
+                    { 
+                        // add to beginning of array
+                        temp.unshift(arr[i]);
+                    }
+                    else
+                    {
+                        // add to end of array
+                        temp.push(arr[i]); 
+                    }
+                }
+                // if i'm at the last item in array
+                else if (temp.length == j + 1)
+                {
+                    if (arr[i] < temp[j])
+                    {
+                        // add before current index
+                        temp.splice(j, 0, arr[i]); 
+                    }
+                    else
+                    {
+                        // add after last item (which is this item)
+                        temp.push(arr[i]); 
+                    }
+                }
+                else
+                {
+                    if (arr[i] < temp[j])
+                    {
+                        // add before current index
+                        temp.splice(j, 0, arr[i]); 
+                    }
+                    else
+                    {
+                        // add after this item, before next item
+                        temp.splice(j + 1, 0, arr[i]); 
+                    }
+                }
+            }
+        }
+    }
+
+    return temp;
+}
+
+var newArray = kindasort([134, 4, 456, 23, 62, 0]);
+						</code></pre>
+					</section>
+					<section>
+						<h3>JavaScript Compilers - CoffeeScript</h3>
+						<p><a href="http://coffeescript.org"><img src="img/coffeescript.png" /></a></p>
+					</section>
+					<section>
+						<h3>JavaScript Compilers - TypeScript</h3>
+						<p><a href="http://typescriptlang.org"><img src="img/typescript.png" /></a></p>
+					</section>
+					<section>
+						<p>&nbsp;</p>
+						<div style="width:300px;margin-left:auto;margin-right:auto;font-size:60px;background:url(img/goodguy.jpg) 10px 10px no-repeat;padding:50px 0px 0px 90px;vertical-align:top;">JavaScript</div>
+						<p>&nbsp;</p>
+						<p>vs.</p>
+						<div style="width:300px;margin-left:auto;margin-right:auto;font-size:60px;background:url(img/scumbag.png) 20px 10px no-repeat;padding:50px 0px 0px 40px;vertical-align:top;">JavaScript</div>
+					</section>
+					<section>
+						<div style="width:300px;margin-left:auto;margin-right:auto;font-size:60px;background:url(img/goodguy.jpg) 10px 10px no-repeat;padding:50px 0px 0px 90px;vertical-align:top;">JavaScript</div>
+						
+						<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">
+var myArray = [];
+
+
+var fullArray = ["so","easy"];
+
+
+var obj = {"Name":"Jorin", "Age": 32};
+obj.Gender = "F";
+
+var objArray = [
+	{"Name":"Jorin", "Age": 32},
+	{"Name":"Sally", "Age": 25}
+];
+objArray.push({"Name":"Bobby", "Age": 4});
+
+
+window.setTimeout(1000, function() { alert('hi'); });
+
+
+"3" + 3 = "33" // string coercion
+						</code></pre>
+					</section>
+					<section>
+						<div style="width:300px;margin-left:auto;margin-right:auto;font-size:60px;background:url(img/scumbag.png) 20px 10px no-repeat;padding:50px 0px 0px 40px;vertical-align:top;">JavaScript</div>
+						
+						<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">
+undefined = 3; // works, wtf
+
+
+typeof NaN == "number" // wtf
+
+
+typeof [] == "object" // not "array"
+
+
+typeof null == "object" // wtf
+
+
+test = 12; // window.test == 12;
+var test = 12; // window.test == undefined;
+
+
+var x = 0;
+var y = false;
+
+x == y // true
+x === y // false
+
+
+var x = 10 / seventeen;
+x == x  // false
+
+
+new Date() // dates suck. period.
+
+
+var test = function()
+{
+	if (condition == true)
+	{
+		var str = "its true";
+
+		// do some stuff with str
+	}
+
+	console.log(str) // will print "its true"
+};
+
+
+
+var myObject = {
+  func1 : function() 
+  {
+     console.log(this); //logs myObject
+     var func2 = function() 
+	 {
+        console.log(this); //logs window, and will do so from this point on
+        var func3 = function() 
+		{
+           console.log(this); //logs window, as it's the head object
+        }();
+     }();
+  }
+};
+myObject.func1();
+						</code></pre>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h2><a href="http://jquery.com">jQuery</a></h2>
+						<ul>
+							<li>Created in 2006 by John Resig (also wicked smart)</li>
+							<li>Came to popularity because it abstracted proprietary browser functionality</li>
+							<li>Uses Sizzle.js for dead simple DOM manipulation</li>
+							<li>Has utility functions for base JavaScript functionality and AJAX calls.</li>
+							<li>There are others...</li>
+						</ul>
+					</section>
+					<section>
+						<h1>Code</h1>
+						<h2>Code</h2>
+						<h3>Code</h3>
+						<h4>Code</h4>
+						<h3>Code</h3>
+						<h2>Code</h2>
+						<h1>Code</h1>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2><a href="http://knockoutjs.com">Knockout</a></h2>
+						<ul>
+							<li>Created in 2010 by Steven Sanderson (you guessed it... wicked smart)</li>
+							<li>Declarative Syntax for Automatic UI Refresh with Dependency Tracking and Templating</li>
+							<li>MVVM = Model-View-ViewModel</li>
+							<li>Not dependent upon any other library</li>
+							<li>There are others...</li>
+						</ul>
+					</section>
+					<section>
+						<h1>Code</h1>
+						<h2>Code</h2>
+						<h3>Code</h3>
+						<h4>Code</h4>
+						<h3>Code</h3>
+						<h2>Code</h2>
+						<h1>Code</h1>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2><a href="http://nodejs.org">Node.js</a></h2>
+						<ul>
+							<li>Created in 2009 by Ryan Dahl & Joyent</li>
+							<li>JavaScript on the server!</li>
+							<li>Event-driven, asynchronous, non-blocking, low-overhead, maximum scalability</li>
+							<li>Runs on Google's V8 JavaScript engine</li>
+						</ul>
+					</section>
+					<section>
+						<h1>Code</h1>
+						<h2>Code</h2>
+						<h3>Code</h3>
+						<h4>Code</h4>
+						<h3>Code</h3>
+						<h2>Code</h2>
+						<h1>Code</h1>
+					</section>
+				</section>
+				<section>
+					<h1>THE END</h1>
+					<h3>BY <a href="http://twitter.com/jslaybaugh">@jslaybaugh</a></h3>
+					<p>&nbsp;</p>
+					<p>&nbsp;</p>
+					<h2>Questions?</h2>
+				</section>
+
+			</div>
+
+			<div class="logo" style="display:block;"></div>
+			
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'lib/js/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/js/data-markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/zoom-js/zoom.js', condition: function() { return !!document.body.classList; } },
+					{ src: '/socket.io/socket.io.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } },
+					{ src: 'plugin/speakernotes/client.js', async: true, condition: function() { return window.location.host === 'localhost:1947'; } }
+				]
+			});
+			
+		</script>
+
+	</body>
+</html>

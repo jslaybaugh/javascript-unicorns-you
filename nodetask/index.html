@@ -1,0 +1,78 @@
+<style type="text/css">
+	.complete {text-decoration:line-through; }
+</style><script src="/socket.io/socket.io.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.1.0.js"></script>
+<script src="https://raw.github.com/SteveSanderson/knockout.mapping/master/build/output/knockout.mapping-latest.js"></script>
+<script>
+
+	var viewModel = {
+
+		MyUser : ko.observable(),
+		Users : ko.observableArray(),
+		Items : ko.observableArray(),
+		ItemToAdd : ko.observable("")
+	};
+
+	viewModel.ItemCount = ko.computed(function () { return viewModel.Items.length; });
+	viewModel.AddItem = function ()
+	{
+		socket.emit("addtask", { UserName: viewModel.MyUser(), Task: viewModel.ItemToAdd(), Completed: false });
+		viewModel.ItemToAdd("");
+	};
+
+	var socket = io.connect('http://localhost:8080');
+
+	// on connection to server, ask for user's name with an anonymous callback
+	socket.on('connect', function ()
+	{
+		// call the server-side function 'adduser' and send one parameter (value of prompt)
+		viewModel.MyUser(prompt("What's your name?"));
+		if (viewModel.MyUser().length < 1)
+		{
+			socket.disconnect();
+			alert("You've been disconnected! Refresh to reconnect and this time provide a name!");
+			return;
+		}
+		socket.emit('adduser', viewModel.MyUser());
+		alert("Connected!");
+	});
+
+	// listener, whenever the server emits 'updatechat', this updates the chat body
+	socket.on('addtask', function (username, data) 
+	{
+		viewModel.Items.push(ko.mapping.fromJS(data));
+	});
+
+	// listener, whenever the server emits 'updateusers', this updates the username list
+	socket.on('updateusers', function (data) 
+	{
+		viewModel.Users.removeAll();
+		$.each(data, function(n)
+		{
+			viewModel.Users.push(n);
+		});
+	});
+
+	$(function()
+	{
+		ko.applyBindings(viewModel);
+	});
+
+
+</script>
+<div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+	<h2>Users <span data-bind="text: '(' + Users().length + ')'"></span></h2>
+	<ul data-bind="foreach: Users">
+		<li data-bind="text: $data"></li>
+	</ul>
+</div>
+<div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+	<h2>Tasks <span data-bind="text: ItemCount"></span></h2>
+	<ul data-bind="foreach: Items">
+		<li><input type="checkbox" data-bind="checked: Completed, enable: $root.MyUser().toUpperCase() == UserName().toUpperCase()" /> <span data-bind="text: Task, css: { 'complete': Completed }"></span> (<span data-bind="text: UserName"></span>)</li>
+	</ul>
+	<form data-bind="submit: AddItem">
+		<input type="text" data-bind="value: ItemToAdd, valueUpdate: 'keyup'" /><input type="submit" value="Add" data-bind="enable: ItemToAdd().length > 0" />
+	</form>
+</div>
